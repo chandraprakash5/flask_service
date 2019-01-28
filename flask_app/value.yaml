@@ -1,0 +1,65 @@
+application_id: oCYBz4Ytozt4ue3g620c 
+environment: dev
+spec:
+  replicas: 3
+  port: 5000
+  autoscaling:
+    minReplicas: 3
+    maxReplicas: 6
+    cpuCondition: 80%
+    memoryCondition: 90%
+  resources:
+    cpuMin: 500m
+    cpuMax: 750m
+    memoryMin: 50Mi
+    memoryMax: 200Mi
+  exposeExternally: true
+enableMonitoring: true
+monitoringPort: 8000
+enableLogUpload: true
+enableRequestTracing: true
+tracingSampleRate: 1
+---
+application_id: oCYBz4Ytozt4ue3g620c
+environment: test
+spec:
+  replicas: 3
+  port: 5000
+  autoscaling:
+    minReplicas: 3
+    maxReplicas: 6
+    cpuCondition: 80%
+    memoryCondition: 90%
+  resources:
+    cpuMin: 500m
+    cpuMax: 750m
+    memoryMin: 50Mi
+    memoryMax: 200Mi
+  exposeExternally: true
+enableMonitoring: true
+monitoringPort: 8000
+enableLogUpload: true
+enableRequestTracing: true
+tracingSampleRate: 1
+---
+application_id: oCYBz4Ytozt4ue3g620c
+environment: prod
+spec:
+  replicas: 3
+  port: 5000
+  autoscaling:
+    minReplicas: 3
+    maxReplicas: 6
+    cpuCondition: 80%
+    memoryCondition: 90%
+  resources:
+    cpuMin: 500m
+    cpuMax: 750m
+    memoryMin: 50Mi
+    memoryMax: 200Mi
+  exposeExternally: true
+enableMonitoring: true
+monitoringPort: 8000
+enableLogUpload: true
+enableRequestTracing: true
+tracingSampleRate: 1
