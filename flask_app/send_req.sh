@@ -3,6 +3,7 @@
 DECLAYER_API_KEY=OsoN0q8bYM
 VALUES_FILE_PATH=$1
 application_id=$(grep -i 'application_id:' $VALUES_FILE_PATH | awk '{print $2}' | tr -d '\r')
+echo $application_id
 value=$(cat $VALUES_FILE_PATH | gzip | base64)
 commit_id=$(git log --format="%H" -n 1)
 image_tag=$commit_id
