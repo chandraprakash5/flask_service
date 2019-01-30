@@ -6,6 +6,7 @@ IMAGE_TAG=$(git log --format="%H" -n 1)
 echo $IMAGE_TAG
 echo $DOCKER_ID_USER
 echo $PWD
+echo `whoami`
 
 cd flask_app
 
