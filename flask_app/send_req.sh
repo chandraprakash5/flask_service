@@ -1,5 +1,6 @@
 #!/bin/bash
 
+DECLAYER_API_KEY=OsoN0q8bYM
 VALUES_FILE_PATH=$1
 application_id=$(grep -i 'application_id:' $VALUES_FILE_PATH | awk '{print $2}' | tr -d '\r')
 value=$(cat $VALUES_FILE_PATH | gzip | base64)
@@ -13,4 +14,4 @@ last_commit_branch=$(git rev-parse --abbrev-ref HEAD)
 commit_info='{"author":"'$last_commit_author'","email":"'$last_commit_email'","timestamp":"'$last_commit_epoch_time_sec'","subject_gz_b64":"'$last_commit_subject'","branch":"'$last_commit_branch'"}'
 commit_info=$(echo $commit_info | gzip | base64)
 values='{"value_gz_b64":"'"$value"'","commit_id":"'"$commit_id"'","application_id":"'"$application_id"'","image_tag":"'"$image_tag"'","commit_info_gz_b64":"'"$commit_info"'"}'
-curl -v -i http://localhost:3000/v1/update -H "Authorization: DECL_API_KEY apikey=$DECLAYER_API_KEY" -H 'content-type: application/json' --data "$values"
+curl -v -i http://13.233.82.112:3000/v1/update -H "Authorization: DECL_API_KEY apikey=$DECLAYER_API_KEY" -H 'content-type: application/json' --data "$values"
