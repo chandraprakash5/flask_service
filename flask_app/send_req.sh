@@ -16,7 +16,7 @@ commit_info=$(echo $commit_info | gzip | base64)
 #values='{"value_gz_b64":"'"$value"'","commit_id":"'"$commit_id"'","application_id":"'"$application_id"'","image_tag":"'"$image_tag"'","commit_info_gz_b64":"'"$commit_info"'"}'
 values={"value_gz_b64":"$value","commit_id":"$commit_id","application_id":"$application_id","image_tag":"$image_tag","commit_info_gz_b64":"$commit_info"}
 echo "##########################################"
-echo $values
+echo $values > /tmp/$commit_id
 echo "##########################################"
-curl -v -i http://13.233.82.112:3000/v1/update -H "Authorization: DECL_API_KEY apikey=$DECLAYER_API_KEY" -H 'content-type: application/json' --data "$values"
-#curl -v -i http://13.233.82.112:3000/v1/update -H "Authorization: DECL_API_KEY apikey=$DECLAYER_API_KEY" -H 'content-type: application/json' --data "'"$values"'"
+#curl -v -i http://13.233.82.112:3000/v1/update -H "Authorization: DECL_API_KEY apikey=$DECLAYER_API_KEY" -H 'content-type: application/json' --data-binary "/tmp/$commit_id"
+curl -v -i http://13.233.82.112:3000/v1/update -H "Authorization: DECL_API_KEY apikey=$DECLAYER_API_KEY" -H 'content-type: application/json' --data "'"$values"'"
