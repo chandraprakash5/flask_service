@@ -20,7 +20,6 @@ enableLogUpload: true
 enableRequestTracing: true
 tracingSampleRate: 1
 ---
-application_id: oCYBz4Ytozt4ue3g620c
 environment: test
 spec:
   replicas: 3
@@ -42,7 +41,6 @@ enableLogUpload: true
 enableRequestTracing: true
 tracingSampleRate: 1
 ---
-application_id: oCYBz4Ytozt4ue3g620c
 environment: prod
 spec:
   replicas: 3
