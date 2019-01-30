@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+DOCKER_ID_USER=chanprak
 IMAGE_TAG=$(git log --format="%H" -n 1)
 echo $IMAGE_TAG
 echo $DOCKER_ID_USER
