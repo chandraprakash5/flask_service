@@ -12,5 +12,5 @@ cd flask_app
 
 docker build -t flask-sample-one:$IMAGE_TAG .
 docker tag flask-sample-one:$IMAGE_TAG $DOCKER_ID_USER/flask-sample-one:$IMAGE_TAG
-docker push $DOCKER_ID_USER/flask-sample-one
+#docker push $DOCKER_ID_USER/flask-sample-one
 cd ..
