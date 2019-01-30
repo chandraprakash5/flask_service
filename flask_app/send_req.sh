@@ -13,8 +13,8 @@ last_commit_subject=$(git log -1 --pretty=format:'%s' | gzip | base64)
 last_commit_branch=$(git rev-parse --abbrev-ref HEAD)
 commit_info='{"author":"'$last_commit_author'","email":"'$last_commit_email'","timestamp":"'$last_commit_epoch_time_sec'","subject_gz_b64":"'$last_commit_subject'","branch":"'$last_commit_branch'"}'
 commit_info=$(echo $commit_info | gzip | base64)
-#values='{"value_gz_b64":"'"$value"'","commit_id":"'"$commit_id"'","application_id":"'"$application_id"'","image_tag":"'"$image_tag"'","commit_info_gz_b64":"'"$commit_info"'"}'
-values={"value_gz_b64":"$value","commit_id":"$commit_id","application_id":"$application_id","image_tag":"$image_tag","commit_info_gz_b64":"$commit_info"}
+values='{"value_gz_b64":"'"$value"'","commit_id":"'"$commit_id"'","application_id":"'"$application_id"'","image_tag":"'"$image_tag"'","commit_info_gz_b64":"'"$commit_info"'"}'
+#values={"value_gz_b64":"$value","commit_id":"$commit_id","application_id":"$application_id","image_tag":"$image_tag","commit_info_gz_b64":"$commit_info"}
 echo "##########################################"
 echo $values > /tmp/$commit_id
 echo "##########################################"
