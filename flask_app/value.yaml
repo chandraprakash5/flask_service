@@ -1,6 +1,6 @@
 application_id: 2vSWCtOzTCHYbCnNFyfG
 image_name: flask-sample-one
-environment: dev
+environment: preprod
 spec:
   replicas: 3
   port: 5000
