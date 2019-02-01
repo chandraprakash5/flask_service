@@ -1,4 +1,5 @@
 application_id: 2vSWCtOzTCHYbCnNFyfG
+image_name: flask-sample-one
 environment: dev
 spec:
   replicas: 3
