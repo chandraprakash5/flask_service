@@ -21,3 +21,4 @@ echo $values > /tmp/$commit_id
 echo "##########################################"
 curl -v -i http://13.233.82.112:3000/v1/update -H "Authorization: DECL_API_KEY apikey=$DECLAYER_API_KEY" -H 'content-type: application/json' --data @/tmp/$commit_id
 #curl -v -i http://13.233.82.112:3000/v1/update -H "Authorization: DECL_API_KEY apikey=$DECLAYER_API_KEY" -H 'content-type: application/json' --data "'"$values"'"
+rm /tmp/$commit_id
