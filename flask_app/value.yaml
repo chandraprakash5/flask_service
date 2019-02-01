@@ -19,6 +19,23 @@ monitoringPort: 8000
 enableLogUpload: true
 enableRequestTracing: true
 tracingSampleRate: 1
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: 5000
+    httpHeaders:
+      - name: X-Decl-Liveness-Check
+        value: Namaste
+  initialDelaySeconds: 3
+  periodSeconds: 3
+readinessProbe:
+  httpGet:
+    path: /healthz
+    port: 5000
+    httpHeaders:
+      - name: X-Decl-Liveness-Check
+        value: Namaste
+  initialDelaySeconds: 3
 ---
 environment: test
 spec:
@@ -40,6 +57,23 @@ monitoringPort: 8000
 enableLogUpload: true
 enableRequestTracing: true
 tracingSampleRate: 1
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: 5000
+    httpHeaders:
+      - name: X-Decl-Liveness-Check
+        value: Namaste
+  initialDelaySeconds: 3
+  periodSeconds: 3
+readinessProbe:
+  httpGet:
+    path: /healthz
+    port: 5000
+    httpHeaders:
+      - name: X-Decl-Liveness-Check
+        value: Namaste
+  initialDelaySeconds: 3
 ---
 environment: prod
 spec:
@@ -61,3 +95,20 @@ monitoringPort: 8000
 enableLogUpload: true
 enableRequestTracing: true
 tracingSampleRate: 1
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: 5000
+    httpHeaders:
+      - name: X-Decl-Liveness-Check
+        value: Namaste
+  initialDelaySeconds: 3
+  periodSeconds: 3
+readinessProbe:
+  httpGet:
+    path: /healthz
+    port: 5000
+    httpHeaders:
+      - name: X-Decl-Liveness-Check
+        value: Namaste
+  initialDelaySeconds: 3
