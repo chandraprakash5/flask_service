@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DECLAYER_API_KEY=OsoN0q8bYM
+DECLAYER_API_KEY=XUAWYHlh8g
 VALUES_FILE_PATH=$1
 application_id=$(grep -i 'application_id:' $VALUES_FILE_PATH | awk '{print $2}' | tr -d '\r')
 echo $application_id
