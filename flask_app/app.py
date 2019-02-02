@@ -309,7 +309,7 @@ def metrics():
 
 @app.route('/healthz/')
 def health_check():
-    return Response("OK")
+    return Response("OK. HEALTHY")
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
