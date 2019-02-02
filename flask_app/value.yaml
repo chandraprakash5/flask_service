@@ -14,7 +14,7 @@ spec:
     cpuMax: 750m
     memoryMin: 50Mi
     memoryMax: 200Mi
-  exposeExternally: true
+  exposeExternally: false
 enableMonitoring: true
 monitoringPort: 8000
 enableLogUpload: true

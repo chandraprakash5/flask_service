@@ -36,8 +36,8 @@ def create_tracer(service_name):
                 'param': 1,
             },
             'local_agent': {
-                'reporting_host': os.environ['JAEGER_AGENT_HOST'],
-                'reporting_port': os.environ['JAEGER_AGENT_PORT'],
+                'reporting_host': os.environ['DECL_JAEGER_AGENT_HOST'],
+                'reporting_port': os.environ['DECL_JAEGER_AGENT_COMPACT_PORT'],
             },
             'logging': True,
         },
