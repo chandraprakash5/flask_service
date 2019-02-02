@@ -2,7 +2,7 @@ application_id: 2vSWCtOzTCHYbCnNFyfG
 image_name: flask-sample-one
 environment: preprod
 spec:
-  replicas: 3
+  replicas: 4
   port: 5000
   autoscaling:
     minReplicas: 3
