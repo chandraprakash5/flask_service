@@ -307,5 +307,9 @@ def metrics():
     return Response(generate_latest(), mimetype=CONTENT_TYPE_LATEST)
 
 
+@app.route('/healthz/')
+def health_check():
+    return Response("OK")
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
