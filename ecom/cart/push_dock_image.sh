@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+export PATH=$PATH:/home/jenkins/.local/bin
 IMAGE_TAG=$(git log --format="%H" -n 1)
 
 cd ecom/cart 
