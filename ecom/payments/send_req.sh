@@ -16,7 +16,7 @@ commit_info='{"author":"'$last_commit_author'","email":"'$last_commit_email'","t
 commit_info=$(echo $commit_info | gzip | base64)
 values='{"value_gz_b64":"'"$value"'","commit_id":"'"$commit_id"'","application_id":"'"$application_id"'","image_tag":"'"$image_tag"'","commit_info_gz_b64":"'"$commit_info"'"}'
 rand_str = $(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')
-tmp_dir = /tmp/jenkins/$rand_str/$application_id/
+tmp_dir = /tmp/jenkins/$rand_str
 mkdir -p $tmp_dir
 echo $values > $tmp_dir/$commit_id
 curl -v -i http://13.233.82.112:3000/v1/update -H "Authorization: DECL_API_KEY apikey=$DECLAYER_API_KEY" -H 'content-type: application/json' --data @$tmp_dir/$commit_id
