@@ -1,5 +1,5 @@
 application_id: 2vSWCtOzTCHYbCnNFyfG
-image_name: flask-sample-one
+image_repo: chanprak/flask-sample-one
 environment: preprod
 spec:
   replicas: 2
