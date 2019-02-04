@@ -1,0 +1,46 @@
+application_id: GusgLbmdds8B9mS11hP5
+image_repo: ecom/cart
+enableLogUpload: true
+enableMonitoring: true
+enableRequestTracing: true
+env:
+- name: REDIS_HOST
+  value: 13.233.82.112
+- name: REDIS_PORT
+  value: '6379'
+- name: APP_SERVER_PORT
+  value: '5000'
+environment: preprod
+livenessProbe:
+  httpGet:
+    httpHeaders:
+    - name: X-Decl-Liveness-Check
+      value: Namaste
+    path: /healthz
+    port: 5000
+  initialDelaySeconds: 3
+  periodSeconds: 3
+monitoringPort: 8000
+readinessProbe:
+  httpGet:
+    httpHeaders:
+    - name: X-Decl-Liveness-Check
+      value: Namaste
+    path: /healthz
+    port: 5000
+  initialDelaySeconds: 3
+spec:
+  autoscaling:
+    cpuCondition: 80%
+    maxReplicas: 4
+    memoryCondition: 70%
+    minReplicas: 2
+  exposeExternally: false
+  port: 5000
+  replicas: 2
+  resources:
+    cpuMax: 700m
+    cpuMin: 200m
+    memoryMax: 900Mi
+    memoryMin: 200Mi
+tracingSampleRate: 0.8
