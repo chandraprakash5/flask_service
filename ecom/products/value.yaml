@@ -1,0 +1,59 @@
+application_id: b6urnYtR00Qm0n7w39V3
+image_repo: ecom/products
+enableLogUpload: true
+enableMonitoring: true
+enableRequestTracing: true
+env:
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      key: db_password
+      name: products-pg
+- name: REVIEWS_ADDR
+  value: ecom-reviews:5000
+- name: INVENTORY_ADDR
+  value: ecom-inventory:5000
+- name: APP_SERVER_PORT
+  value: '5000'
+- name: DB_USER
+  value: ecom_user
+- name: DB_HOST
+  value: 13.233.82.112
+- name: DB_NAME
+  value: ecom
+- name: DB_PORT
+  value: '5432'
+environment: preprod
+livenessProbe:
+  httpGet:
+    httpHeaders:
+    - name: X-Decl-Liveness-Check
+      value: Namaste
+    path: /healthz
+    port: 5000
+  initialDelaySeconds: 3
+  periodSeconds: 3
+monitoringPort: 8000
+readinessProbe:
+  httpGet:
+    httpHeaders:
+    - name: X-Decl-Liveness-Check
+      value: Namaste
+    path: /healthz
+    port: 5000
+  initialDelaySeconds: 3
+spec:
+  autoscaling:
+    cpuCondition: 70%
+    maxReplicas: 4
+    memoryCondition: 80%
+    minReplicas: 1
+  exposeExternally: false
+  port: 5000
+  replicas: 1
+  resources:
+    cpuMax: 900m
+    cpuMin: 200m
+    memoryMax: 900Mi
+    memoryMin: 200Mi
+tracingSampleRate: 0.2
