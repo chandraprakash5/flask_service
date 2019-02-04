@@ -1,0 +1,61 @@
+application_id: jlDSmM0OtxpH4P4tP4re
+image_repo: ecom/orders
+enableLogUpload: true
+enableMonitoring: true
+enableRequestTracing: true
+env:
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      key: db_password
+      name: orders-pg
+- name: CART_ADDR
+  value: ecom-cart:5000
+- name: INVENTORY_ADDR
+  value: ecom-inventory:5000
+- name: APP_SERVER_PORT
+  value: '5000'
+- name: PAYMENTS_ADDR
+  value: ecom-payments:5000
+- name: DB_HOST
+  value: 13.233.82.112
+- name: DB_PORT
+  value: '5432'
+- name: DB_USER
+  value: ecom_user
+- name: DB_NAME
+  value: ecom
+environment: preprod
+livenessProbe:
+  httpGet:
+    httpHeaders:
+    - name: X-Decl-Liveness-Check
+      value: Namaste
+    path: /healthz
+    port: 5000
+  initialDelaySeconds: 3
+  periodSeconds: 3
+monitoringPort: 8000
+readinessProbe:
+  httpGet:
+    httpHeaders:
+    - name: X-Decl-Liveness-Check
+      value: Namaste
+    path: /healthz
+    port: 5000
+  initialDelaySeconds: 3
+spec:
+  autoscaling:
+    cpuCondition: 80%
+    maxReplicas: 4
+    memoryCondition: 90%
+    minReplicas: 1
+  exposeExternally: false
+  port: 5000
+  replicas: 1
+  resources:
+    cpuMax: 700m
+    cpuMin: 200m
+    memoryMax: 900Mi
+    memoryMin: 200Mi
+tracingSampleRate: 0.2
