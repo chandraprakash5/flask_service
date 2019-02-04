@@ -1,0 +1,55 @@
+application_id: Qmt2FaLbud0NqnkU2P73
+image_repo: ecom/inventory
+enableLogUpload: true
+enableMonitoring: true
+enableRequestTracing: true
+env:
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      key: db_password
+      name: inventory-pg
+- name: APP_SERVER_PORT
+  value: '5000'
+- name: DB_HOST
+  value: 13.233.82.112
+- name: DB_PORT
+  value: '5432'
+- name: DB_USER
+  value: ecom_user
+- name: DB_NAME
+  value: ecom
+environment: preprod
+livenessProbe:
+  httpGet:
+    httpHeaders:
+    - name: X-Decl-Liveness-Check
+      value: Namaste
+    path: /healthz
+    port: 5000
+  initialDelaySeconds: 3
+  periodSeconds: 3
+monitoringPort: 8000
+readinessProbe:
+  httpGet:
+    httpHeaders:
+    - name: X-Decl-Liveness-Check
+      value: Namaste
+    path: /healthz
+    port: 5000
+  initialDelaySeconds: 3
+spec:
+  autoscaling:
+    cpuCondition: 80%
+    maxReplicas: 3
+    memoryCondition: 70%
+    minReplicas: 1
+  exposeExternally: false
+  port: 5000
+  replicas: 1
+  resources:
+    cpuMax: 900m
+    cpuMin: 200m
+    memoryMax: 700Mi
+    memoryMin: 100Mi
+tracingSampleRate: 0.2
