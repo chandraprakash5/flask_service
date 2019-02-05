@@ -2,6 +2,7 @@
 
 DECLAYER_API_KEY=XUAWYHlh8g
 VALUES_FILE_PATH=$1
+
 application_id=$(grep -i 'application_id:' $VALUES_FILE_PATH | awk '{print $2}' | tr -d '\r')
 value=$(cat $VALUES_FILE_PATH | gzip | base64)
 commit_id=$(git log --format="%H" -n 1)
