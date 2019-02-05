@@ -53,7 +53,7 @@ spec:
   port: 5000
   replicas: 1
   resources:
-    cpuMax: 900m
+    cpuMax: 700m
     cpuMin: 200m
     memoryMax: 900Mi
     memoryMin: 200Mi

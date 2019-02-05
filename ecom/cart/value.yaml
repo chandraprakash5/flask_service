@@ -42,6 +42,6 @@ spec:
   resources:
     cpuMax: 700m
     cpuMin: 200m
-    memoryMax: 900Mi
+    memoryMax: 800Mi
     memoryMin: 200Mi
 tracingSampleRate: 0.2
