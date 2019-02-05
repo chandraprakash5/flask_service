@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.7.2-slim-stretch
 MAINTAINER Declayer "contact@declayer.com"
 COPY requirements.txt /app/requirements.txt
 WORKDIR /app
