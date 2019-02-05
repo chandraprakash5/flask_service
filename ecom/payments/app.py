@@ -32,7 +32,7 @@ def healthz():
     return "OK"
 
 
-@app.route('/payment_details', methods=['POST'])
+@app.route('/payment_details', methods=['GET'])
 def get_payment_details():
     app.logger.info("Log from payments/payment_details")
     response = None
@@ -97,11 +97,12 @@ def payment_callback():
         app.logger.error("Parameter payment_id is missing")
         abort(400, "Parameter payment_id is missing")
     else:
-        order_id = int(payment_id)
+        payment_id = int(payment_id)
     transaction_details = request.get_json()
     error_details = transaction_details["error_message"] if "error_message" in transaction_details else None
     try:
-        payments_servicer.handle_payment_callback(payment_id=payment_id, success=transaction_details["success"],
+        payments_servicer.handle_payment_callback(payment_id=payment_id,
+                                                  success=bool(int(transaction_details["success"])),
                                                   error_details=error_details)
         response = app.response_class(
             response="OK",
