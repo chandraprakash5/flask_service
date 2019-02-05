@@ -28,7 +28,7 @@ livenessProbe:
     path: /healthz
     port: 5000
   initialDelaySeconds: 3
-  periodSeconds: 3
+  periodSeconds: 10
 monitoringPort: 8000
 readinessProbe:
   httpGet:
