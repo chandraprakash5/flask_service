@@ -33,8 +33,8 @@ livenessProbe:
       value: Namaste
     path: /healthz
     port: 5000
-  initialDelaySeconds: 3
-  periodSeconds: 10
+  initialDelaySeconds: 15
+  periodSeconds: 15
 monitoringPort: 8000
 readinessProbe:
   httpGet:
@@ -43,7 +43,8 @@ readinessProbe:
       value: Namaste
     path: /healthz
     port: 5000
-  initialDelaySeconds: 3
+  initialDelaySeconds: 15
+  periodSeconds: 15
 spec:
   autoscaling:
     cpuCondition: 80%
