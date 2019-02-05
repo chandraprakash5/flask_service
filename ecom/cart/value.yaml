@@ -34,13 +34,13 @@ spec:
     cpuCondition: 80%
     maxReplicas: 4
     memoryCondition: 70%
-    minReplicas: 2
+    minReplicas: 1
   exposeExternally: false
   port: 5000
-  replicas: 2
+  replicas: 1
   resources:
     cpuMax: 700m
     cpuMin: 200m
     memoryMax: 900Mi
     memoryMin: 200Mi
-tracingSampleRate: 0.8
+tracingSampleRate: 0.2
