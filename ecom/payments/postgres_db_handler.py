@@ -23,8 +23,8 @@ class PostgresDBHandler(object):
         metadata = sqlalchemy.schema.MetaData()
 
         pool_size = int(config.get(PostgresDBHandler.POOL_SIZE, 5))
-        connect_timeout = int(config.get(PostgresDBHandler.CONNECT_TIMEOUT, 10)) # seconds
-        statement_timeout = int(config.get(PostgresDBHandler.STATEMENT_TIMEOUT, 20000)) # milliseconds
+        connect_timeout = int(config.get(PostgresDBHandler.CONNECT_TIMEOUT, 30)) # seconds
+        statement_timeout = int(config.get(PostgresDBHandler.STATEMENT_TIMEOUT, 40000)) # milliseconds
         port = int(config.get(PostgresDBHandler.PORT, 5432))
         host = config[PostgresDBHandler.HOST]
         password = config[PostgresDBHandler.PASSWORD]
