@@ -44,4 +44,3 @@ spec:
     cpuMin: 200m
     memoryMax: 700Mi
     memoryMin: 200Mi
-tracingSampleRate: 0.2
