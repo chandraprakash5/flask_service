@@ -39,6 +39,8 @@ class PaymentsServicer(object):
         for k, v in payment.__dict__.items():
             if not k.startswith('_'):
                 payment_dict[k] = v
+                if isinstance(v, Decimal):
+                    payment_dict[k] = float(v)
                 if isinstance(v, date):
                     payment_dict[k] = v.isoformat()
                 if k in self.JSON_COLUMNS:
