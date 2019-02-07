@@ -14,7 +14,7 @@ env:
 - name: INVENTORY_ADDR
   value: ecom-inventory:5000
 - name: APP_SERVER_PORT
-  value: '80'
+  value: '5000'
 - name: PAYMENTS_ADDR
   value: ecom-payments:5000
 - name: DB_HOST
@@ -32,7 +32,7 @@ livenessProbe:
     - name: X-Decl-Liveness-Check
       value: Namaste
     path: /healthz
-    port: 80
+    port: 5000
   initialDelaySeconds: 15
   periodSeconds: 15
 monitoringPort: 8000
@@ -42,7 +42,7 @@ readinessProbe:
     - name: X-Decl-Liveness-Check
       value: Namaste
     path: /healthz
-    port: 80
+    port: 5000
   initialDelaySeconds: 15
   periodSeconds: 15
 spec:
@@ -51,8 +51,8 @@ spec:
     maxReplicas: 4
     memoryCondition: 90%
     minReplicas: 1
-  exposeExternally: true 
-  port: 80
+  exposeExternally: false 
+  port: 5000
   replicas: 1
   resources:
     cpuMax: 700m
