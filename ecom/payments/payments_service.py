@@ -54,7 +54,7 @@ class PaymentsServicer(object):
         db_session = self.db_handler.getSession()
         try:
             response = dict(acknowledge=True)
-            payment = Payment(order_id=order_id, mode=mode, mode_details=json.dumps(mode_details),
+            payment = Payment(order_id=order_id, payment_mode=mode, mode_details=json.dumps(mode_details),
                               amount=amount, transaction_date=func.now())
             payment.status = "Created"
             db_session.add(payment)
