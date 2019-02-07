@@ -5,7 +5,7 @@ enableMonitoring: true
 enableRequestTracing: true
 env:
 - name: APP_SERVER_PORT
-  value: 5000
+  value: '5000'
 - name: REDIS_HOST
   value: 13.233.140.231
 - name: REDIS_PORT
