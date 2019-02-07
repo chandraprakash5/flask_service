@@ -10,7 +10,7 @@ env:
       key: db_password
       name: payments-pg
 - name: ORDERS_ADDR
-  value: ecom-orders:5000
+  value: ecom-orders:80
 - name: APP_SERVER_PORT
   value: '5000'
 - name: DB_HOST
