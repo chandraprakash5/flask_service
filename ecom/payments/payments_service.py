@@ -49,7 +49,7 @@ class PaymentsServicer(object):
         return payment_dict
 
     def __update_payment_status_on_order(self, order_id: int, status: str):
-        res = requests.put(url=self.UPDATE_PAYMENT_STATUS_FORMAT.format(self.orders_addr, order_id=order_id,
+        res = requests.put(url=self.UPDATE_PAYMENT_STATUS_FORMAT.format(orders_addr=self.orders_addr, order_id=order_id,
                                                                         status=status))
         return res.status_code == 200
 
