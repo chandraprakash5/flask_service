@@ -189,11 +189,9 @@ class OrdersServicer(object):
                        Order.id == order_id).all()
             if order_details is None or len(order_details) == 0:
                 raise ValueError("Invalid order id: %d", order_id)
-            payment_details = dict()
             order = order_details[0][0]
             order_dict = self.__get_dictionary_for_order(order_rows=[order])[0]
-            if order.payment_status != "Pending":
-                order_dict["payment_details"] = self.__get_payment_details(order_id=order_id)
+            order_dict["payment_details"] = self.__get_payment_details(order_id=order_id)
             order_item_dicts = self.__get_dictionary_for_order_items(order_orderitem_rows=order_details)
             order_dict["items"] = order_item_dicts
             return order_dict
