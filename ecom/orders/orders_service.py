@@ -77,7 +77,7 @@ class OrdersServicer(object):
         return data
 
     def __get_payment_details(self, order_id):
-        res = requests.get(url=self.PAYMENT_DETAILS_FORMAT.format(self.payments_addr, order_id=order_id))
+        res = requests.get(url=self.PAYMENT_DETAILS_FORMAT.format(payments_addr=self.payments_addr, order_id=order_id))
         if res.status_code != 200:
             current_app.logger.warning("Could not fetch payment details")
             current_app.logger.warning("Status code: %d", res.status_code)
