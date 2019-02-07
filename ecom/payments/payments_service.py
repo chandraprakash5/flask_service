@@ -1,6 +1,7 @@
 import json
 import requests
 
+from decimal import Decimal
 from datetime import date
 from flask import current_app
 from postgres_db_handler import PostgresDBHandler
