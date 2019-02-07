@@ -1,4 +1,4 @@
-application_id: cSPWsIgkmdX2EVmjHH2N
+application_id: BYx724Il1owBtTucjSGD
 image_repo: ecom/payments
 enableLogUpload: true
 enableMonitoring: true
@@ -7,7 +7,7 @@ env:
 - name: DB_PASSWORD
   valueFrom:
     secretKeyRef:
-      key: db_password
+      key: db_pass
       name: payments-pg
 - name: ORDERS_ADDR
   value: ecom-orders:5000
@@ -15,12 +15,8 @@ env:
   value: '5000'
 - name: DB_HOST
   value: 13.233.82.112
-- name: DB_PORT
-  value: '5432'
 - name: DB_USER
   value: ecom_user
-- name: DB_NAME
-  value: ecom
 environment: preprod
 livenessProbe:
   httpGet:
@@ -43,7 +39,7 @@ readinessProbe:
   periodSeconds: 15
 spec:
   autoscaling:
-    cpuCondition: 60%
+    cpuCondition: 80%
     maxReplicas: 4
     memoryCondition: 70%
     minReplicas: 1
