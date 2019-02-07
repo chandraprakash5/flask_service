@@ -12,7 +12,7 @@ Base = declarative_base()
 
 
 class Payment(Base):
-    __tablename__ = 'product'
+    __tablename__ = 'payment'
     id = Column(Integer, primary_key=True)
     order_id = Column(Integer)
     payment_mode = Column(String(50))
