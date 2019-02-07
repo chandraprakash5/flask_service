@@ -1,6 +1,5 @@
 configobj==5.0.6
 psycopg2==2.7.6.1
 Flask==1.0.2
-git+http://13.233.82.112:8080/library-releases@0.2.3#subdirectory=python3
 requests==2.21.0
 sqlalchemy==1.2.17
