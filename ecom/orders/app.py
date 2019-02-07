@@ -67,7 +67,7 @@ def order():
             abort(400, "Parameter id is missing")
         else:
             order_id = int(order_id)
-        app.logger.debug("Order id: %d" % order_id)
+        app.logger.info("Fetching order details for id: %d", order_id)
         try:
             order_dict = orders_servicer.get_order_details(order_id=order_id)
             response = app.response_class(
@@ -84,7 +84,7 @@ def order():
     else:
         user_id = int(request.args.get('user_id'))
         order_json = request.get_json()
-        app.logger.debug("Creating order for user id: %d" % user_id)
+        app.logger.info("Creating order for user id: %d" % user_id)
         try:
             order_dict = orders_servicer.create_order(user_id=user_id, delivery_address=order_json["delivery_address"])
             response = app.response_class(
