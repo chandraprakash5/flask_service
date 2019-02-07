@@ -7,7 +7,7 @@ env:
 - name: DB_PASSWORD
   valueFrom:
     secretKeyRef:
-      key: db_pass
+      key: db_password
       name: payments-pg
 - name: ORDERS_ADDR
   value: ecom-orders:5000
