@@ -1,0 +1,50 @@
+application_id: JCPEnSmK1cw5ICe6e6qf
+image_repo: ecom/payments
+enableLogUpload: true
+enableMonitoring: true
+enableRequestTracing: true
+env:
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      key: db_password
+      name: payments-pg
+- name: ORDERS_ADDR
+  value: ecom-orders:5000
+- name: APP_SERVER_PORT
+  value: '5000'
+environment: preprod
+livenessProbe:
+  httpGet:
+    httpHeaders:
+    - name: X-Decl-Liveness-Check
+      value: Namaste
+    path: /healthz
+    port: 5000
+  initialDelaySeconds: 15
+  periodSeconds: 15
+monitoringPort: 8000
+readinessProbe:
+  httpGet:
+    httpHeaders:
+    - name: X-Decl-Liveness-Check
+      value: Namaste
+    path: /healthz
+    port: 5000
+  initialDelaySeconds: 15
+  periodSeconds: 15
+spec:
+  autoscaling:
+    cpuCondition: 80%
+    maxReplicas: 4
+    memoryCondition: 70%
+    minReplicas: 1
+  exposeExternally: false
+  port: 5000
+  replicas: 1
+  resources:
+    cpuMax: 500m
+    cpuMin: 200m
+    memoryMax: 500Mi
+    memoryMin: 200Mi
+tracingSampleRate: 0.2
