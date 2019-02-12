@@ -16,7 +16,7 @@ env:
 - name: APP_SERVER_PORT
   value: '5000'
 - name: PAYMENTS_ADDR
-  value: 13.233.140.231:5000 
+  value: ecom-payments:5000 
 - name: DB_HOST
   value: 13.233.82.112
 - name: DB_PORT
