@@ -1,14 +1,9 @@
-application_id: JCPEnSmK1cw5ICe6e6qf
+application_id: 6Pv4limtlwe8LaWKpLBM
 image_repo: ecom/payments
 enableLogUpload: true
 enableMonitoring: true
 enableRequestTracing: true
 env:
-- name: DB_PASSWORD
-  valueFrom:
-    secretKeyRef:
-      key: db_password
-      name: payments-pg
 - name: ORDERS_ADDR
   value: ecom-orders:5000
 - name: APP_SERVER_PORT
@@ -35,9 +30,9 @@ readinessProbe:
   periodSeconds: 15
 spec:
   autoscaling:
-    cpuCondition: 80%
+    cpuCondition: 70%
     maxReplicas: 4
-    memoryCondition: 70%
+    memoryCondition: 80%
     minReplicas: 1
   exposeExternally: false
   port: 5000
