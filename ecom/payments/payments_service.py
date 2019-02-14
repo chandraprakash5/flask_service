@@ -1,4 +1,5 @@
 import json
+import base64
 import requests
 
 from decimal import Decimal
