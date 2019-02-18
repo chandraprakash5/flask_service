@@ -1,13 +1,22 @@
-application_id: 6Pv4limtlwe8LaWKpLBM
+application_id: j7Hr5EmWCMTnkqAEJv1F
 image_repo: ecom/payments
 enableLogUpload: true
 enableMonitoring: true
 enableRequestTracing: true
 env:
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      key: db_password
+      name: payments-pg
 - name: ORDERS_ADDR
   value: ecom-orders:5000
 - name: APP_SERVER_PORT
   value: '5000'
+- name: DB_HOST
+  value: 13.233.82.112
+- name: DB_USER
+  value: ecom_user
 environment: preprod
 livenessProbe:
   httpGet:
@@ -30,16 +39,16 @@ readinessProbe:
   periodSeconds: 15
 spec:
   autoscaling:
-    cpuCondition: 70%
-    maxReplicas: 4
-    memoryCondition: 80%
-    minReplicas: 1
+    cpuCondition: 80%
+    maxReplicas: 3
+    memoryCondition: 70%
+    minReplicas: 2
   exposeExternally: false
   port: 5000
-  replicas: 1
+  replicas: 2
   resources:
-    cpuMax: 500m
+    cpuMax: 700m
     cpuMin: 200m
-    memoryMax: 500Mi
+    memoryMax: 700Mi
     memoryMin: 200Mi
 tracingSampleRate: 0.2
