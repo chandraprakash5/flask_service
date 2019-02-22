@@ -1,4 +1,4 @@
-application_id: HfONhFF5dv7EhpB7V5pA
+application_id: NoZTvJwLn7bMfenyjnyZ
 image_repo: ecom/payments
 enableLogUpload: true
 enableMonitoring: true
@@ -20,13 +20,10 @@ env:
 environment: preprod
 livenessProbe:
   httpGet:
-    httpHeaders:
-    - name: X-Decl-Liveness-Check
-      value: Namaste
     path: /healthz
     port: 5000
-  initialDelaySeconds: 15
-  periodSeconds: 15
+  initialDelaySeconds: 10
+  periodSeconds: 10
 monitoringPort: 8000
 readinessProbe:
   httpGet:
