@@ -1,5 +1,5 @@
 application_id: Qmt2FaLbud0NqnkU2P73
-image_repo: ecom/inventory
+image_repo: chanprak/ecom-inventory
 enableLogUpload: true
 enableMonitoring: true
 enableRequestTracing: true
