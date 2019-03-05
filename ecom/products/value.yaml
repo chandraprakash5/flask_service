@@ -46,15 +46,15 @@ readinessProbe:
 spec:
   autoscaling:
     cpuCondition: 70%
-    maxReplicas: 4
+    maxReplicas: 1
     memoryCondition: 80%
     minReplicas: 1
   exposeExternally: false
   port: 5000
   replicas: 1
   resources:
-    cpuMax: 700m
-    cpuMin: 200m
-    memoryMax: 900Mi
-    memoryMin: 200Mi
+    cpuMax: 100m
+    cpuMin: 100m
+    memoryMax: 200Mi
+    memoryMin: 100Mi
 tracingSampleRate: 0.2
