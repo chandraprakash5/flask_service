@@ -1,4 +1,4 @@
-application_id: 3FalFQTzT8dsxNob60mq
+application_id: 88F1S3f3wOYhmuPJMZhH
 image_repo: chanprak/ecom-payments
 enableLogUpload: true
 enableMonitoring: true
@@ -20,6 +20,9 @@ env:
 environment: preprod
 livenessProbe:
   httpGet:
+    httpHeaders:
+    - name: X-Decl-Liveness-Check
+      value: Namaste
     path: /healthz
     port: 5000
   initialDelaySeconds: 10
@@ -27,9 +30,6 @@ livenessProbe:
 monitoringPort: 8000
 readinessProbe:
   httpGet:
-    httpHeaders:
-    - name: X-Decl-Liveness-Check
-      value: Namaste
     path: /healthz
     port: 5000
   initialDelaySeconds: 10
